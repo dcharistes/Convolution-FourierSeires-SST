@@ -48,16 +48,15 @@ end
 clear;
 syms t   
 sum=0;  
-x=pi^2-t^2;  %function you want 
+x=pi^2-t^2;  
 a0=(1/(2*pi/4))*int(x,t,-pi/4,pi/4); 
 for n=1:5 
-        %finding the coefficients 
+       
     an=(1/(pi/4))*int(x*cos((n*pi*t)/(pi/4)),t,-pi/4,pi/4); 
     bn=(1/(pi/4))*int(x*sin((n*pi*t)/(pi/4)),t,-pi/4,pi/4);    
     sum=sum+(an*cos((n*pi*t)/(pi/4))+bn*sin((n*pi*t)/(pi/4)));  
 end 
-f_s=sum+(a0/2);
-% https://www.instagram.com/koroshkorosh1/
+f_s=sum + a0;
 figure(5)
 subplot(211)
 ezplot(t,x,[-pi/4,pi/4]);
