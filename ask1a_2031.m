@@ -19,15 +19,20 @@ for i=1:4
         case 3
             x=0.75*(heaviside(t+(pi/4))-heaviside(t-(pi/4)));
             h=cos(0.25*t);
-            c=dt*conv(x,h,'same');
+            c=dt*conv(x,h,"same");
             c_culc=(-3*(sin(0.25*t-(pi/16))-sin(0.25*t+(pi/16)))).*(heaviside(t+(pi/4))-heaviside(t-(pi/4)));
         case 4
             x=heaviside(t+1)-heaviside(t-2);
             h=0.25*(heaviside(t+0.75)-heaviside(t-0.75));
             c=dt*conv(x,h,'same');
             c_culc= 0*(heaviside(t+(7/4))) + (1/4*(t+7/4)).*(heaviside(t+(7/4))-heaviside(t+0.25)) + 3/8*(heaviside(t+0.25)-heaviside(t-(5/4))) + (-0.25*t +(11/16)).*(heaviside(t-(5/4))-heaviside(t-(11/4))) + 0*heaviside(t-(11/4));
+        case 5
+            x=heaviside(t+0.25)-heaviside(t-1);
+            h=exp((-1/3)*t.^2);
+            c=dt*conv(x,h,'same');
     end
-    l=(1:length(c)).*dt +t(1);
+    l=(1:length(c_culc)).*dt +t(1);
+     
     %disp(c);
     
     figure(i)
@@ -44,29 +49,5 @@ for i=1:4
     grid on, xlabel('t'), ylabel('amp');
     
 end
-
-clear;
-syms t   
-sum=0;  
-x=pi^2-t^2;  
-a0=(1/(2*pi/4))*int(x,t,-pi/4,pi/4); 
-for n=1:5 
-       
-    an=(1/(pi/4))*int(x*cos((n*pi*t)/(pi/4)),t,-pi/4,pi/4); 
-    bn=(1/(pi/4))*int(x*sin((n*pi*t)/(pi/4)),t,-pi/4,pi/4);    
-    sum=sum+(an*cos((n*pi*t)/(pi/4))+bn*sin((n*pi*t)/(pi/4)));  
-end 
-f_s=sum + a0;
-figure(5)
-subplot(211)
-ezplot(t,x,[-pi/4,pi/4]);
-title('function'),
-grid on, xlim([-pi/4 pi/4]), xlabel('t'), ylabel('x'); 
-hold on; 
-subplot(212)
-ezplot(t,f_s,[-pi/4,pi/4]), grid on; 
-title('fourier series of x'),
-xlim([-pi/4 pi/4]), xlabel('t'), ylabel('f_s');
-
 
 end
