@@ -27,8 +27,8 @@ for i=1:4
             h=exp((-1/3)*t.^2);
             c=dt*conv(x,h,'same');
     end
+
     l=(1:length(c_culc)).*dt +t(1);
-      
     
     figure(i)
     subplot(311), plot(t,x,'r'), title('x impulse response'),

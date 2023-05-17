@@ -2,9 +2,7 @@ function ask1b_2031
 clc;clear;
 
 syms t   
-sum=0; 
 x=pi^2-t^2;
-
 a0_c=2*(pi^2)/3;
 sum_c=0;
 l=1;
