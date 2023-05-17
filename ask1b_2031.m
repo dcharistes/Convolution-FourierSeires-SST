@@ -2,44 +2,42 @@ function ask1b_2031
 clc;clear;
 
 syms t   
-sum=0;  
+sum=0; 
 x=pi^2-t^2;
-%f_s=zeros(1,5);
-i=1;
-a0=(1/(2*pi))*int(x,t,-pi,pi); 
+
+a0_c=2*(pi^2)/3;
+sum_c=0;
+l=1;
 for n=1:10
-    an=(1/pi)*int(x*cos((n*pi*t)/pi),t,-pi,pi); 
-    bn=(1/pi)*int(x*sin((n*pi*t)/pi),t,-pi,pi);    
-    sum=sum+(an*cos((n*pi*t)/pi)+bn*sin((n*pi*t)/pi));
+    sum_c=sum_c + ((-4/n^2)*(-1)^n)*cos(n*t);
     switch n
         case 1 
-            f_s(i)= sum+a0;
-            i=i+1;
+            f_s_c(l)= sum_c+a0_c;
+            l=l+1;
         case 2
-            f_s(i)= sum+a0;
-            i=i+1;
+            f_s_c(l)= sum_c+a0_c;
+            l=l+1;
         case 3
-            f_s(i)= sum+a0;
-            i=i+1;
+            f_s_c(l)= sum_c+a0_c;
+            l=l+1;
         case 5
-            f_s(i)= sum+a0;
-            i=i+1;
+            f_s_c(l)= sum_c+a0_c;
+            l=l+1;
         case 10
-            f_s(i)= sum+a0;
-            i=i+1;
+            f_s_c(l)= sum_c+a0_c;
+            l=l+1;
     end
-end 
-
+end
 %f_s=sum + a0;
-disp(f_s);
 figure('Name','Initial function')
 fplot(t,x,[-pi,pi]), title('function x= π^2 - t^2'),
 grid on, xlim([-pi pi]), ylim([0 10]), xlabel('t'), ylabel('x'); 
 
-figure('Name',"Fourier series transformation of x")
-for i=1:5
-subplot(3,2,i),
-fplot(t,f_s(i),[-pi,pi]), title("For n= "+i),
+figure('Name',"Fourier series transformation of x (culc)")
+for l=1:5
+subplot(3,2,l),
+fplot(t,f_s_c(l),[-pi,pi]), title("For n= "+l),
 grid on, xlim([-pi pi]), ylim([0 10]), xlabel('t'), ylabel('f_s');
+end
 
 end
