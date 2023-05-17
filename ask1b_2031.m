@@ -28,12 +28,11 @@ for n=1:10
             l=l+1;
     end
 end
-%f_s=sum + a0;
 figure('Name','Initial function')
 fplot(t,x,[-pi,pi]), title('function x= π^2 - t^2'),
 grid on, xlim([-pi pi]), ylim([0 10]), xlabel('t'), ylabel('x'); 
 
-figure('Name',"Fourier series transformation of x (culc)")
+figure('Name',"Fourier series transformation of x")
 for l=1:5
 subplot(3,2,l),
 fplot(t,f_s_c(l),[-pi,pi]), title("For n= "+l),
