@@ -35,10 +35,10 @@ for i=1:4
     grid on, xlim([-10 10]), xlabel('t'), ylabel('amp');
     
     subplot(312), plot(t,h,'b'), title('h system input'),
-    grid on, xlabel('t'), ylabel('amp');
+    grid on, xlim([-10 10]), xlabel('t'), ylabel('amp');
     
     subplot(313), plot(l,c_culc,'r'), title('x(t)*h(t) system response - convolution(culc)'),
-    grid on, xlabel('t'), ylabel('amp');
+    grid on, xlim([-10 10]), xlabel('t'), ylabel('amp');
     
 end
 
