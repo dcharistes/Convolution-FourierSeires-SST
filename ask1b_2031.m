@@ -35,7 +35,7 @@ for l=1:5
 subplot(3,2,l),
 fplot(t,x,[-pi,pi]), hold on;
 fplot(t,f_s_c(l),[-pi,pi]), title("For n= "+l),
-grid on, xlim([-pi pi]), ylim([0 10]), xlabel('t'), ylabel('f_s'),legend('x','f_s');
+grid on, xlim([-pi pi]), ylim([0 10]), xlabel('t'), legend('x','f_s');
 end
 
 end
